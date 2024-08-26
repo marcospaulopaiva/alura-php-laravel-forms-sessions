@@ -11,8 +11,6 @@ class SeriesController extends Controller
     public function index()
     {
         $series = Serie::query()->orderBy('nome')->get();
-        //$series = Serie::all();
-        //dd($series);
 
         return view('series.index')-> with('series', $series);
     }
@@ -26,6 +24,6 @@ class SeriesController extends Controller
     {
         Serie::create($request->all());
 
-        return redirect('/series');
+        return to_route('series.index');
     }
 }
